@@ -1,4 +1,4 @@
-module Cas::Services
+module CasGithub::Services
   class Signup
   
   end

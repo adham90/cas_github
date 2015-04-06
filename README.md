@@ -1,8 +1,6 @@
-# CasGithub
+# GCAS
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cas_github`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+The Github Central Authentication Service (GCAS) is a single sign-on protocol work with github oauth system for the web. Its purpose is to permit a user to access multiple applications while providing their credentials only once. It also allows web applications to authenticate users without gaining access to a user's security credentials.
 
 ## Installation
 

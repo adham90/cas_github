@@ -1,6 +1,6 @@
 require "spec_helper"
 
-module Cas::Services
+module CasGithub::Services
   describe Signup do
     before :each do
       @service = Signup.new(email: "me@example.com", password: "password")
