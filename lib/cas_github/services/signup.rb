@@ -1,12 +1,13 @@
 module CasGithub::Services
   class Signup
-    attr_reader :email, :uid, :username, :name, :user
-    
-    def initialize(email: "me@example.com", uid: "123", username: "user1", name: "name")
+    attr_reader :user, :status
+
+    def initialize(email:, uid:, username:, name:, avatar_url:)
       @email = email
       @uid = uid
       @username = username
       @name = name
+      @avatar_url = avatar_url
     end
 
     def call
@@ -14,7 +15,10 @@ module CasGithub::Services
       @user.uid = @uid
       @user.username = @username
       @user.name = @name
-      @user.save
+      @user.avatar_url = @avatar_url
+      if @user.save
+        @status = :ok
+      end
     end
   end
 end

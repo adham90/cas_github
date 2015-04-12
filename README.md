@@ -7,7 +7,7 @@ The Github Central Authentication Service (GCAS) is a single sign-on protocol wo
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'cas_github'
+gem 'cas_github', github: 'geekhub-io/cas_github'
 ```
 
 And then execute:

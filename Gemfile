@@ -7,6 +7,6 @@ gem "pry-byebug"
 gem 'sqlite3'
 gem 'sinatra'
 gem 'omniauth-github', '~> 1.1.2'
-gem 'omniauth', '~> 1.2.2'
+gem 'haml'
 # Specify your gem's dependencies in cas.gemspec
 gemspec
