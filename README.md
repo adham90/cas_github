@@ -2,22 +2,6 @@
 
 The Github Central Authentication Service (GCAS) is a single sign-on protocol work with github oauth system for the web. Its purpose is to permit a user to access multiple applications while providing their credentials only once. It also allows web applications to authenticate users without gaining access to a user's security credentials.
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'cas_github', github: 'geekhub-io/cas_github'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install cas_github
-
 ## Usage
 
 TODO: Write usage instructions here
