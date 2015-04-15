@@ -1,4 +1,5 @@
-ENV["GCAS_ENV"] = "development"
+ENV["GCAS_ENV"] ||= "development"
+
 require "bundler/gem_tasks"
 require "active_record"
 

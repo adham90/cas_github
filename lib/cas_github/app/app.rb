@@ -20,6 +20,7 @@ class App < Sinatra::Base
 
 
   get "/" do
-    "Hello, world"
+    @users = User.all
+    haml :index
   end
 end
