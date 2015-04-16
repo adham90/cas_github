@@ -25,13 +25,16 @@ RSpec.configure do |config|
     end
   end
 
-  def spawn_user email: "me@example.com", username: "user1", name: "adham", uid: "123", avatar_url: "image.png"
+  def spawn_user email: "me@example.com", username: "user", name: "name", 
+    uid: "uid", avatar_url: "avatar_url"
+
     service = CasGithub::Services::Signup.new(email: email,
                                               username: username,
                                               name: name,
                                               uid: uid,
                                               avatar_url: avatar_url
                                              )
+
     service.call
     service.user
   end
