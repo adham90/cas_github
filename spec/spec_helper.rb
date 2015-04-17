@@ -44,4 +44,11 @@ RSpec.configure do |config|
     service.call
     service.ticket
   end
+
+  def spawn_ticket_granting_ticket user: nil
+    tgt = TicketGrantingTicket.new name: "TGT-rand", user: user
+    tgt.save
+    tgt
+  end
+
 end

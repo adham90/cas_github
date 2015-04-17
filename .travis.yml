@@ -1,3 +1,18 @@
 language: ruby
+
 rvm:
   - 2.1.5
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq nodejs
+
+bundler_args: --without development
+
+before_script:
+  - bundle exec rake db:migrate
+  - APP_ENV=test bundle exec rake db:migrate
+
+script:
+  - bundle exec rspec
+  - cd $CAS_GITHUB_HOME/lib/cas_github/app && rackup

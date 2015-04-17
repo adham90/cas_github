@@ -16,11 +16,23 @@ module CasGithub::Services
     end
 
     it "logs a user in based off an existing session" do
-
+      ticket_granting_ticket = spawn_ticket_granting_ticket user: user
+      service = Login.new(
+        ticket_granting_ticket_name: ticket_granting_ticket.name,
+        service: "https://app.example.com"
+      )
+      service.call
+      expect(service.status).to eq :ok
     end
 
     it "provides a service ticket based off a ticket granting cookie auth attempt" do
-
+      ticket_granting_ticket = spawn_ticket_granting_ticket user: user
+      service = Login.new(
+        ticket_granting_ticket_name: ticket_granting_ticket.name,
+        service: "https://app.example.com"
+      )
+      service.call
+      expect(service.service_ticket).to be_kind_of ServiceTicket
     end
 
     context "given an existing login ticket" do
