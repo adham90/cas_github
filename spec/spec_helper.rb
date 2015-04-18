@@ -46,9 +46,14 @@ RSpec.configure do |config|
   end
 
   def spawn_ticket_granting_ticket user: nil
-    tgt = TicketGrantingTicket.new name: "TGT-rand", user: user
+    tgt = TicketGrantingTicket.new name: "TGT-#{Digest::SHA1.hexdigest(Time.new.to_s)}", user: user
     tgt.save
     tgt
   end
 
+  def spawn_service_ticket service: nil, user: nil
+    st = ServiceTicket.new service: service, name: "ST-#{Digest::SHA1.hexdigest(Time.new.to_s)}", user: user
+    st.save
+    st
+  end
 end
