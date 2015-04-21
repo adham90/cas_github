@@ -7,26 +7,32 @@ class APP < Grape::API
   format :json
   formatter :json, Grape::Formatter::Rabl
 
+  before do
+    header['Access-Control-Allow-Origin'] = '*'
+    header['Access-Control-Request-Method'] = '*'
+  end
+  
   use OmniAuth::Builder do
-    provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']#, provider_ignores_state: true
+    provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user,repo,gist", provider_ignores_state: true
   end
 
   get '/', rabl: "/hi" do
-    { hello: "world" }
+    @user = User.all
   end
 
   resource :auth do
-    %w(get post).each do |method|
-      send(method, "/:provider/callback") do
-        auth = env['omniauth.auth']
-        serveice = CasGithub::Services::Signup.new email: auth[:info][:email], name: auth[:info][:name], uid: auth[:uid], username: "adham", avatar_url: "url"
-        serveice.call
+    get '/github' do
+    end
 
-        if serveice.status == :ok
-          redirect "/"
-        end
-      end
+    get '/github/callback' do
+      auth = env['omniauth.auth']
+      serveice = CasGithub::Services::Signup.new email: auth[:info][:email], name: auth[:info][:name], uid: auth[:uid], username: "adham", avatar_url: "url"
+      serveice.call
+      redirect "/"
+      if serveice.status == :ok
+        redirect "/"
+      end      
     end
   end
-  
+
 end
