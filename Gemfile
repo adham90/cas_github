@@ -5,8 +5,11 @@ gem "activerecord", require: "active_record"
 gem "database_cleaner"
 gem "pry-byebug"
 gem 'sqlite3'
-gem 'sinatra'
+gem 'grape'
+# gem 'sinatra'
 gem 'omniauth-github', '~> 1.1.2'
-gem 'haml'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem "grape-rabl", require: "grape/rabl"
 # Specify your gem's dependencies in cas.gemspec
 gemspec

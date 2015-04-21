@@ -1,0 +1,13 @@
+$:.unshift File.expand_path "..", __FILE__
+require 'bundler'
+Bundler.require
+require "./app"
+
+desc "API Routes"
+task :routes do
+  APP.routes.each do |api|
+    method = api.route_method.ljust(10)
+    path   = api.route_path
+    puts "     #{method} #{path}"
+  end
+end
