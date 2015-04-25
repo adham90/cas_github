@@ -5,7 +5,7 @@ require "./app"
 
 desc "API Routes"
 task :routes do
-  APP.routes.each do |api|
+  CasGithub::API::APP.routes.each do |api|
     method = api.route_method.ljust(10)
     path   = api.route_path
     puts "     #{method} #{path}"

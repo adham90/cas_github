@@ -13,4 +13,3 @@ namespace :db do
     ActiveRecord::Migrator.migrate(File.expand_path('../lib/cas_github/migrations', __FILE__))
   end
 end
-

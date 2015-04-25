@@ -1,5 +1,7 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
+require 'rubygems'
+require 'rack/test'
 require "bundler"
 Bundler.require
 require 'cas_github'
@@ -13,6 +15,10 @@ ActiveRecord::Base.establish_connection(
 DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |config|
+
+  config.mock_with :rspec
+  config.expect_with :rspec
+  config.raise_errors_for_deprecations!
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
@@ -55,5 +61,20 @@ RSpec.configure do |config|
     st = ServiceTicket.new service: service, name: "ST-#{Digest::SHA1.hexdigest(Time.new.to_s)}", user: user
     st.save
     st
+  end
+
+
+  def valid_github_login
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+      provider: 'github',
+      uid: '123545',
+      info: {
+        name: "Andrea",
+        username:  "Del_Rio",
+        avatar_url: "avatar_url",
+        email:      "test@example.com"
+      }
+    })
   end
 end
