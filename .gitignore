@@ -8,4 +8,9 @@
 /spec/reports/
 /tmp/
 /db
+
+.secrets.yml
+.secrets
+secrets.yml
+secrets
 /lib/cas_github/app/config/secrets.yml
