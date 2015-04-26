@@ -21,5 +21,6 @@ group :test do
   gem 'rack-test', '~> 0.6.2'
   gem 'capybara', '~> 2.4.4'
 end
+
 # Specify your gem's dependencies in cas.gemspec
 gemspec
